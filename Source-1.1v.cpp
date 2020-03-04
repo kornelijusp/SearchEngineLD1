@@ -6,6 +6,7 @@ using namespace std;
 
 const char dataBase[] = "data.csv"; // File name
 
+// Klase 1
 class Kandidatas
 {
 private:
@@ -27,9 +28,23 @@ public:
     void setData(string, string, string, int, double);
     string getFirstName();
     string getLastName();
-    string getProfesion();
+    string getProfession();
     int getExperiance();
     double getExpectedSalary();
+
+    void insertUser()
+    {
+        cout << "Insert User" << endl
+             << endl;
+        cout << "First name: ";
+        cin >> firstName;
+        cout << endl
+             << endl
+             << "Last name: ";
+        cin >> lastName;
+        cout << "Profession: ";
+        cin >> profession;
+    }
 };
 void Kandidatas::setData(string firstName, string lastName, string profession, int experience, double expectedSalary)
 {
@@ -47,7 +62,7 @@ string Kandidatas::getLastName()
 {
     return lastName;
 }
-string Kandidatas::getProfesion()
+string Kandidatas::getProfession()
 {
     return profession;
 }
@@ -60,8 +75,41 @@ double Kandidatas::getExpectedSalary()
     return expectedSalary;
 }
 
+// ===================================================
+// Klase 2
+class List
+{
+private:
+    Kandidatas k[200];
+    int n; // Users amount
+public:
+    List()
+    {
+        ifstream f(dataBase);
+        n = 0;
+        if (f.fail())
+            cout << "Can't find file!";
+        else
+        {
+            string v, p, prof;
+            int pat;
+            double sal;
+            int a;
+            while (!f.eof())
+            {
+                f >> v >> p >> prof >> pat >> sal;
+                k[n].setData(v, p, prof, pat, sal);
+                n++;
+            }
+        }
+        f.close();
+    }
+};
+// ===========================================================
+// Main
 
-int main() {
+int main()
+{
 
     return 0;
 }
