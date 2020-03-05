@@ -6,7 +6,7 @@ using namespace std;
 
 const char dataBase[] = "data.csv";
 
-const int maxStudent = 200;
+const int maxStudent = 210;
 
 class Kandidatas
 {
